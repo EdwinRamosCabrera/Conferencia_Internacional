@@ -1,0 +1,75 @@
+---
+const sponsors = [
+  { name: "Alicorp", image: "../src/assets/alicorp.webp" },
+  { name: "Entel", image: "../src/assets/entel.jpg" },
+  { name: "Plaza Vea", image: "../src/assets/Plaza_Vea.png" },
+  { name: "Telefonica", image: "../src/assets/Telefonica.jpeg" },
+  { name: "Cerro Verde", image: "../src/assets/cerro_verde.png" },
+  { name: "Win", image: "../src/assets/win.png" },
+  { name: "Backus", image: "../src/assets/backus.jpg" },
+];
+---
+
+<section class="w-full bg-[#020617] py-10">
+  <div class="max-w-full mx-auto px-2">
+    <h2 class="text-4xl font-bold text-center mb-4">
+      <span class="text-white">Nuestros</span>
+      <span class="text-[#3b82f6]">Auspiciadores</span>
+    </h2>
+
+    <div class="relative overflow-hidden">
+      <div class="sponsor-track flex items-center gap-10">
+        {sponsors.map((sponsor) => (
+          <div class="sponsor-slide flex flex-wrap">
+            <img
+              src={sponsor.image}
+              alt={sponsor.name}
+              class="w-100 h-60 rounded-lg object-contain"
+            />
+          </div>
+        ))}
+        {/* Duplicate sponsors for seamless loop */}
+        {sponsors.map((sponsor) => (
+          <div class="sponsor-slide flex flex-wrap">
+            <img
+              src={sponsor.image}
+              alt={sponsor.name}
+              class="w-100 h-60 rounded-lg object-contain"
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .sponsor-track {
+    animation: scroll 30s linear infinite;
+  }
+
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-30%);
+    }
+  }
+
+  .sponsor-track:hover {
+    animation-play-state: paused;
+  }
+</style>
+
+<script>
+  // Ensure smooth animation restart when the track finishes
+  const track = document.querySelector('.sponsor-track') as HTMLElement;
+  if (track) {
+    track.addEventListener('animationend', () => {
+      track.style.animation = 'none';
+      track.offsetHeight; // Trigger reflow
+      track.style.animation = 'scroll 30s linear infinite';
+    });
+  }
+</script>

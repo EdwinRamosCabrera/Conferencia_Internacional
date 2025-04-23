@@ -1,0 +1,83 @@
+---
+const ponentes = [
+    {
+        nombre: "Ph.D. Kenji Nakamura",
+        imagen: "../src/assets/kenji_nakamura.jpg",
+        titulo: "PhD en Políticas Públicas en la Universidad Hanyang, Seúl",
+        pais: "/public/Japan.svg"
+    },
+    {
+        nombre: "Ph.D. Shinobu Fujimoto",
+        imagen: "../src/assets/Shinobu_Fujimoto.jpg",
+        titulo: "PhD en Ciencias Estadísticas en la Universidad Meiji, Tokio",
+        pais: "/public/Japan.svg"
+    },
+    {
+        nombre: "Mg. Diego Vidal Campos",
+        imagen: "../src/assets/Diego_Vidal_Campos.jpg",
+        titulo: "Magíster en Ingeniería Informática en la Pontificia Universidad Católica, Argentina",
+        pais: "/public/Argentina.svg"
+    },
+    {
+        nombre: "Mg. Maria Salazar Rodriguez",
+        imagen: "/src/assets/Maria_Salazar_Rodriguez.jpg",
+        titulo: "Magíster en Ciencias de la Computación e Informática en la Pontificia Universidad Católica, Argentina",
+        pais: "/public/Argentina.svg"
+    },
+    {
+        nombre: "Dr. Ricardo Sanchez Torres",
+        imagen: "../src/assets/Ricardo_Sanchez_Torres.jpg",
+        titulo: "Doctor en Ingeniería en Informática en la Universidad Técnica Federico Santa María, Chile",
+        pais: "/public/Chile.svg"
+    },
+    {
+        nombre: "Mg. Pedro Robles Diaz",
+        imagen: "/src/assets/Pedro_Robles_Diaz.jpg",
+        titulo: "Mg. in Computer Science de la Universidad Interamericana, Puerto Rico",
+        pais: "/public/Puerto_Rico.svg"
+    },
+    {
+        nombre: "Mg. Leonardo Mirabal Cruz",
+        imagen: "/src/assets/Leonardo_Mirabal_Cruz.jpg",
+        titulo: "Magíster en Ingeniería Informática de la Universidad Católica, Puerto Rico",
+        pais: "/public/Puerto_Rico.svg"
+    },
+    {
+        nombre: "Mg. Ernesto Mauro Suarez Lopez",
+        imagen: "/src/assets/Ernesto_Suarez.webp",
+        titulo: "Magíster en Tecnología de la Información con Especialización en Ingeniería Web en la Universidad Macquarie, Australia",
+        pais: "/public/Peru.svg"
+    },
+]
+---
+
+<section class="w-full py-16 bg-[#020617] text-white">
+    <div class="max-w-7xl mx-auto px-4">
+        <div class="text-center mb-12">
+            <h2 class="text-5xl font-bold mb-4">
+                Nuestros <span class="text-[#00A6CC]">Ponentes</span>
+            </h2>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {ponentes.map(ponente => (
+                <div class="bg-gradient-to-b from-gray-900 to-gray-800 rounded-2xl overflow-hidden shadow-xl transform transition-all duration-500 hover:scale-105">
+                    <div class="aspect-w-4 aspect-h-3">
+                        <img 
+                            src={ponente.imagen} 
+                            alt={ponente.nombre}
+                            class="w-full h-[300px] object-cover"
+                        />
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-2">
+                            <h3 class="text-xl font-bold">{ponente.nombre}</h3>
+                            <img src={ponente.pais} alt={ponente.nombre} class="w-10 h-10" />
+                        </div>
+                        <p class="text-gray-400 text-sm">{ponente.titulo}</p>
+                    </div>
+                </div>
+            ))}
+        </div>
+    </div>
+</section>

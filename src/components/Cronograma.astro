@@ -1,0 +1,176 @@
+---
+interface ScheduleItem {
+  time: string;
+  title: string;
+  isSpecial?: boolean;
+  speaker?: string;
+  role?: string;
+  image?: string;
+}
+
+const days = [
+  { id: "lunes", label: "Lunes" },
+  { id: "martes", label: "Martes" },
+  { id: "miercoles", label: "Miércoles" },
+  { id: "jueves", label: "Jueves" },
+  { id: "viernes", label: "Viernes" },
+] as const;
+
+const schedules: Record<string, ScheduleItem[]> = {
+  lunes: [],
+  martes: [],
+  miercoles: [],
+  jueves: [
+    {
+      time: "8:30 - 9:00",
+      title: "CONTROL Y REGISTRO DE ASISTENCIA",
+      isSpecial: true,
+    },
+    {
+      time: "9:00 - 10:00",
+      speaker: "Dr. Yuber Elmer Velazco Paredes",
+      role: "Doctor en Ciencias de la Computación en la Universidad Nacional de San Agustín de Arequipa, Perú",
+      title:
+        "Hacia una interpretabilidad de la IA basada en lógica difusa y redes neuronales",
+      image: "/speakers/speaker1.jpg",
+    },
+    {
+      time: "10:00 - 11:00",
+      speaker: "Dr. Pedro Aniel Sánchez Mirabal",
+      role: "Doctor en Ciencias de la computación en Universidad de Concepción, Chile",
+      title: "Procesamiento de Lenguaje Natural",
+      image: "/speakers/speaker2.jpg",
+    },
+    {
+      time: "11:00 - 14:00",
+      title: "FERIA TECNOLÓGICA",
+      isSpecial: true,
+    },
+  ],
+  viernes: [],
+};
+---
+
+<section class="w-full mx-auto p-4 bg-gray-600">
+  <div class="w-7xl mx-auto">
+    <h2 class="text-5xl font-bold text-center text-white mb-8">Cronograma</h2>
+    <div class="flex justify-center gap-4 mb-8">
+      {
+        days.map((day) => (
+          <button
+            data-day={day.id}
+            class="day-btn px-6 py-2 rounded-lg text-white transition-colors duration-300"
+            class:list={[
+              "bg-blue-600 hover:bg-blue-700",
+              { "ring-2 ring-white": day.id === "jueves" },
+            ]}
+          >
+            {day.label}
+          </button>
+        ))
+      }
+    </div>
+
+    <h3
+      class="text-4xl font-bold text-center text-[#3b82f6] mb-8"
+      id="current-day"
+    >
+      Jueves 14/11/2024
+    </h3>
+
+    <div class="schedule-container">
+      {
+        Object.keys(schedules).map((day) => (
+          <div
+            class:list={[
+              "schedule-content space-y-4",
+              { hidden: day !== "jueves" },
+            ]}
+            data-schedule={day}
+          >
+            {schedules[day].map((item) =>
+              item.isSpecial ? (
+                <div class="bg-[#B45309] text-white p-4 rounded-lg">
+                  <p class="font-bold">{item.time}</p>
+                  <p class="text-xl">{item.title}</p>
+                </div>
+              ) : (
+                <div class="bg-[#0A0F1C] text-white p-6 rounded-lg flex gap-6">
+                  <div class="flex-1">
+                    <p class="text-4xl font-mono mb-4">{item.time}</p>
+                    <p class="text-gray-400 mb-2">{item.speaker}</p>
+                    <p class="text-sm text-gray-500 mb-4">{item.role}</p>
+                    <h4 class="text-xl font-bold">{item.title}</h4>
+                  </div>
+                  {item.image && (
+                    <div class="w-32 h-32 flex-shrink-0">
+                      <img
+                        src={item.image}
+                        alt={item.speaker}
+                        class="w-full h-full object-cover rounded-lg"
+                      />
+                    </div>
+                  )}
+                </div>
+              )
+            )}
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<script>
+  const buttons = document.querySelectorAll<HTMLButtonElement>(".day-btn");
+  const schedules =
+    document.querySelectorAll<HTMLDivElement>(".schedule-content");
+  const currentDayText = document.getElementById("current-day");
+
+  const dayTitles: Record<string, string> = {
+    lunes: "Lunes 11/11/2024",
+    martes: "Martes 12/11/2024",
+    miercoles: "Miércoles 13/11/2024",
+    jueves: "Jueves 14/11/2024",
+    viernes: "Viernes 15/11/2024",
+  };
+
+  buttons.forEach((button) => {
+    button.addEventListener("click", () => {
+      // Remove active state from all buttons
+      buttons.forEach((btn) => {
+        btn.classList.remove("ring-2", "ring-white");
+      });
+
+      // Add active state to clicked button
+      button.classList.add("ring-2", "ring-white");
+
+      // Hide all schedules
+      schedules.forEach((schedule) => {
+        schedule.classList.add("hidden");
+      });
+
+      // Show selected schedule
+      const dayId = button.getAttribute("data-day");
+      if (dayId) {
+        const targetSchedule = document.querySelector(
+          `[data-schedule="${dayId}"]`
+        );
+        if (targetSchedule) {
+          targetSchedule.classList.remove("hidden");
+        }
+
+        // Update day title
+        if (currentDayText && dayId in dayTitles) {
+          currentDayText.textContent = dayTitles[dayId];
+        }
+      }
+    });
+  });
+</script>
+
+<style>
+  .schedule-container {
+    min-height: 400px;
+  }
+</style>
