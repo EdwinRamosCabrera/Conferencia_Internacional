@@ -6,6 +6,7 @@ interface ScheduleItem {
   speaker?: string;
   role?: string;
   image?: string;
+  color?: string;
 }
 
 const days = [
@@ -17,52 +18,251 @@ const days = [
 ] as const;
 
 const schedules: Record<string, ScheduleItem[]> = {
-  lunes: [],
-  martes: [],
-  miercoles: [],
+  lunes: [
+    {
+      time: "8:30 - 12:30",
+      title: "INFORMES E INSCRIPCIONES",
+      isSpecial: true,
+      color: "#B45309",
+    },
+    {
+      time: "12:30 - 14:00",
+      title: "RECESO Y ALMUERZO",
+      isSpecial: true,
+      color: "#1742A2",
+    },
+    {
+      time: "14:00 - 16:00",
+      title: "INFORMES E INSCRIPCIONES",
+      isSpecial: true,
+      color: "#B45309",
+    },
+    {
+      time: "14:00 - 16:00",
+      speaker: "Dr. Ricardo Sanchez Torres",
+      role: "Doctor en Ingeniería en Informática en la Universidad Técnica Federico Santa María, Chile",
+      title:
+        "Inteligencia Artificial Generativa: Fundamentos y su Aplicación en el Dominio del Rescate Patrimonial",
+      image: "../src/assets/Ricardo_Sanchez_Torres.jpg",
+    },
+    {
+      time: "16:00 - 18:00",
+      speaker: "Mg. Pedro Robles Diaz",
+      role: "Mg. in Computer Science de la Universidad Interamericana, Puerto Rico",
+      title: "Tecnologías IOT para enfrentar desafíos “SMART CITY & SMART INDUSTRY”",
+      image: "../src/assets/Pedro_Robles_Diaz.jpg",
+    },
+    {
+      time: "18:00 - 19:30",
+      title: "INAUGURACIÓN",
+      isSpecial: true,
+      color: "#1742A2",
+    },
+  ],
+  martes: [
+  {
+      time: "8:30 - 9:00",
+      title: "CONTROL Y REGISTRO DE ASISTENCIA",
+      isSpecial: true,
+      color: "#B45309",
+    },
+    {
+      time: "9:00 - 10:30",
+      speaker: "Dr. Ricardo Sanchez Torres",
+      role: "Doctor en Ingeniería en Informática en la Universidad Técnica Federico Santa María, Chile",
+      title:
+        "Desarrollo de una herramienta interactiva basada en la Robótica para el aprendizaje de la programación",
+      image: "../src/assets/Ricardo_Sanchez_Torres.jpg",
+    },
+    {
+      time: "10:30 - 12:00",
+      speaker: "Mg. Diego Vidal Campos",
+      role: "Magíster en Ingeniería Informática en la Pontificia Universidad Católica, Argentina",
+      title:
+        "Land User Identification through Social Network Interaction",
+      image: "../src/assets/Diego_Vidal_Campos.jpg",
+    },
+    {
+      time: "12:30 - 14:00",
+      title: "RECESO Y ALMUERZO",
+      isSpecial: true,
+      color: "#1742A2",
+    },
+    {
+      time: "14:00 - 16:00",
+      speaker: "Mg. Pedro Robles Diaz",
+      role: "Mg. in Computer Science de la Universidad Interamericana, Puerto Rico",
+      title:
+        "Experimento empirico para obtener requisitos de usabilidad en desarrollo de software",
+      image: "../src/assets/Pedro_Robles_Diaz.jpg",
+    },
+    {
+      time: "16:00 - 18:00",
+      speaker: "Mg. Leonardo Mirabal Cruz",
+      role: "Magíster en Ingeniería Informática de la Universidad Católica, Puerto Rico",
+      title:
+        "Experiencias y Herramientas MLOps",
+      image: "../src/assets/Leonardo_Mirabal_Cruz.jpg",
+    }
+  ],
+  miercoles: [
+  {
+      time: "8:30 - 9:00",
+      title: "CONTROL Y REGISTRO DE ASISTENCIA",
+      isSpecial: true,
+      color: "#B45309",
+    },
+    {
+      time: "9:00 - 10:30",
+      speaker: "Mg. Leonardo Mirabal Cruz",
+      role: "Magíster en Ingeniería Informática de la Universidad Católica, Puerto Rico",
+      title:
+        "Aumento de datos enfocado en series de tiempo",
+      image: "../src/assets/Leonardo_Mirabal_Cruz.jpg",
+    },
+    {
+      time: "10:30 - 12:00",
+      speaker: "Mg. Ernesto Mauro Suarez Lopez",
+      role: "Magíster en Tecnología de la Información con Especialización en Ingeniería Web en la Universidad Macquarie, Australia",
+      title:
+        "Deep learning y remote sensing",
+      image: "../src/assets/Ernesto_Suarez.webp",
+    },
+    {
+      time: "12:30 - 14:00",
+      title: "RECESO Y ALMUERZO",
+      isSpecial: true,
+      color: "#1742A2",
+    },
+    {
+      time: "14:00 - 16:00",
+      speaker: "Mg. Maria Salazar Rodriguez",
+      role: "Magíster en Ciencias de la Computación e Informática en la Pontificia Universidad Católica, Argentina",
+      title:
+        "Buenas Prácticas en el Desarrollo Full Stack: Control de Versiones y Clean Code en Proyectos",
+      image: "../src/assets/Maria_Salazar_Rodriguez.jpg",
+    },
+    {
+      time: "16:00 - 18:00",
+      speaker: "Ph.D. Kenji Nakamura",
+      role: "PhD en Políticas Públicas en la Universidad Hanyang, Seúl",
+      title:
+        "Aprendizaje reforzado para sistemas de control subactuado",
+      image: "../src/assets/kenji_nakamura.jpg",
+    }
+  ],
   jueves: [
     {
       time: "8:30 - 9:00",
       title: "CONTROL Y REGISTRO DE ASISTENCIA",
       isSpecial: true,
+      color: "#B45309",
+    },
+    {
+      time: "9:00 - 10:30",
+      speaker: "Ph.D. Kenji Nakamura",
+      role: "PhD en Políticas Públicas en la Universidad Hanyang, Seúl",
+      title:
+        "Interpretabilidad de la IA basada en lógica difusa y redes neuronales",
+      image: "../src/assets/kenji_nakamura.jpg",
+    },
+    {
+      time: "10:30 - 12:00",
+      speaker: "Ph.D. Shinobu Fujimoto",
+      role: "PhD en Ciencias Estadísticas en la Universidad Meiji, Tokio",
+      title: "Procesamiento masivo de datos con la IA",
+      image: "../src/assets/Shinobu_Fujimoto.jpg",
+    },
+    {
+      time: "12:00 - 14:00",
+      title: "RECESO Y ALMUERZO",
+      isSpecial: true,
+      color: "#1742A2",
+    },
+    {
+      time: "14:00 - 16:00",
+      title: "FERIA TECNOLÓGICA",
+      isSpecial: true,
+      color: "#B45309",
+    },
+  ],
+  viernes: [
+  {
+      time: "8:30 - 9:00",
+      title: "CONTROL Y REGISTRO DE ASISTENCIA",
+      isSpecial: true,
+      color: "#B45309",
     },
     {
       time: "9:00 - 10:00",
-      speaker: "Dr. Yuber Elmer Velazco Paredes",
-      role: "Doctor en Ciencias de la Computación en la Universidad Nacional de San Agustín de Arequipa, Perú",
+      speaker: "Ph.D. Shinobu Fujimoto",
+      role: "PhD en Ciencias Estadísticas en la Universidad Meiji, Tokio",
       title:
-        "Hacia una interpretabilidad de la IA basada en lógica difusa y redes neuronales",
-      image: "/speakers/speaker1.jpg",
+        "Combination of Software and Hardware",
+      image: "../src/assets/Shinobu_Fujimoto.jpg",
     },
     {
       time: "10:00 - 11:00",
-      speaker: "Dr. Pedro Aniel Sánchez Mirabal",
-      role: "Doctor en Ciencias de la computación en Universidad de Concepción, Chile",
-      title: "Procesamiento de Lenguaje Natural",
-      image: "/speakers/speaker2.jpg",
+      speaker: "Mg. Maria Salazar Rodriguez",
+      role: "Magíster en Ciencias de la Computación e Informática en la Pontificia Universidad Católica, Argentina",
+      title:
+        "Computación Gráfica",
+      image: "../src/assets/Maria_Salazar_Rodriguez.jpg",
     },
     {
-      time: "11:00 - 14:00",
-      title: "FERIA TECNOLÓGICA",
+      time: "11:00 - 13:00",
+      title: "CONCURSO DE PROGRAMACIÓN",
       isSpecial: true,
+      color: "#1742A2",
+    },
+    {
+      time: "13:00 - 14:00",
+      title: "RECESO Y ALMUERZO",
+      isSpecial: true,
+      color: "#B45309",
+    },
+    {
+      time: "14:00 - 16:00",
+      speaker: "Mg. Ernesto Mauro Suarez Lopez",
+      role: "Magíster en Tecnología de la Información con Especialización en Ingeniería Web en la Universidad Macquarie, Australia",
+      title:
+        "Marco de trabajo para la enseñanza de la programación usando una tarea de imágenes de un tablero de ajedrez",
+      image: "../src/assets/Ernesto_Suarez.webp",
+    },
+    {
+      time: "16:00 - 18:00",
+      speaker: "Ph.D. Kenji Nakamura",
+      role: "PhD en Políticas Públicas en la Universidad Hanyang, Seúl",
+      title:
+        "IOT: dos aplicaciones típicas en la industria",
+      image: "../src/assets/kenji_nakamura.jpg",
+    },
+    {
+      time: "18:00 - 19:00",
+      title: "CLAUSURA",
+      isSpecial: true,
+      color: "#1742A2",
     },
   ],
-  viernes: [],
 };
 ---
 
 <section class="w-full mx-auto p-4 bg-gray-600">
-  <div class="w-7xl mx-auto">
-    <h2 class="text-5xl font-bold text-center text-white mb-8">Cronograma</h2>
+  <div class="w-4xl mx-auto">
+    <div class="text-center mb-12">
+      <h2 class="text-5xl font-bold mb-4">
+        Nuestro <span class="text-[#00A6CC]">Cronograma</span>
+      </h2>
+    </div>
     <div class="flex justify-center gap-4 mb-8">
       {
         days.map((day) => (
           <button
             data-day={day.id}
-            class="day-btn px-6 py-2 rounded-lg text-white transition-colors duration-300"
+            class="day-btn px-6 py-2 rounded-lg text-white font-bold transition-colors duration-300"
             class:list={[
               "bg-blue-600 hover:bg-blue-700",
-              { "ring-2 ring-white": day.id === "jueves" },
+              { "ring-2 ring-white": day.id === "lunes" },
             ]}
           >
             {day.label}
@@ -75,7 +275,7 @@ const schedules: Record<string, ScheduleItem[]> = {
       class="text-4xl font-bold text-center text-[#3b82f6] mb-8"
       id="current-day"
     >
-      Jueves 14/11/2024
+      Lunes 10/11/2025
     </h3>
 
     <div class="schedule-container">
@@ -84,26 +284,26 @@ const schedules: Record<string, ScheduleItem[]> = {
           <div
             class:list={[
               "schedule-content space-y-4",
-              { hidden: day !== "jueves" },
+              { hidden: day !== "lunes" },
             ]}
             data-schedule={day}
           >
             {schedules[day].map((item) =>
               item.isSpecial ? (
-                <div class="bg-[#B45309] text-white p-4 rounded-lg">
-                  <p class="font-bold">{item.time}</p>
-                  <p class="text-xl">{item.title}</p>
+                <div class="text-white p-4 rounded-lg" style={`background-color: ${item.color || '#1742A2'}`}>
+                  <p class="text-lg font-bold inline px-4">{item.time}</p>
+                  <p class="text-xl font-semibold inline">{item.title}</p>
                 </div>
               ) : (
                 <div class="bg-[#0A0F1C] text-white p-6 rounded-lg flex gap-6">
                   <div class="flex-1">
-                    <p class="text-4xl font-mono mb-4">{item.time}</p>
-                    <p class="text-gray-400 mb-2">{item.speaker}</p>
+                    <p class="text-3xl font-mono mb-4">{item.time}</p>
+                    <p class="text-lg text-gray-400 mb-2">{item.speaker}</p>
                     <p class="text-sm text-gray-500 mb-4">{item.role}</p>
                     <h4 class="text-xl font-bold">{item.title}</h4>
                   </div>
                   {item.image && (
-                    <div class="w-32 h-32 flex-shrink-0">
+                    <div class="w-36 h-36 flex-shrink-0">
                       <img
                         src={item.image}
                         alt={item.speaker}
@@ -128,11 +328,11 @@ const schedules: Record<string, ScheduleItem[]> = {
   const currentDayText = document.getElementById("current-day");
 
   const dayTitles: Record<string, string> = {
-    lunes: "Lunes 11/11/2024",
-    martes: "Martes 12/11/2024",
-    miercoles: "Miércoles 13/11/2024",
-    jueves: "Jueves 14/11/2024",
-    viernes: "Viernes 15/11/2024",
+    lunes: "Lunes 10/11/2025",
+    martes: "Martes 12/11/2025",
+    miercoles: "Miércoles 13/11/2025",
+    jueves: "Jueves 14/11/2025",
+    viernes: "Viernes 15/11/2025",
   };
 
   buttons.forEach((button) => {
