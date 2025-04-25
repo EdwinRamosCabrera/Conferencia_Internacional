@@ -5,6 +5,11 @@ import Ponentes from './Ponentes.astro';
 import Cronograma from './Cronograma.astro';
 import Auspiciadores from './Auspiciadores.astro';
 import Landing from './Landing.astro';
+import Talleres from './Talleres.astro';
+import { getCollection } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+
+const workshops = await getCollection('workshops');
 ---
 <main class="flex flex-col items-center justify-center">
     <Landing />
@@ -14,5 +19,3 @@ import Landing from './Landing.astro';
     <Cronograma />
     <Auspiciadores />
 </main>
-       
-    

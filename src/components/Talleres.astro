@@ -1,0 +1,91 @@
+---
+// We define the props that the component needs
+interface Props {
+  title: string;
+  date: Date;
+  hour: string;
+  placement: string;
+  cost: number;
+  requirements: string;
+  image?: string;
+  tags?: string[];
+  url?: string;
+}
+
+const { 
+  title = "Desarrollo de aplicaciones móviles con Jetpack Compose",
+  date = new Date("2025-11-27"),
+  hour = "10:00 - 12:00",
+  placement = "Laboratorio B",
+  cost = 100.00,
+  requirements = "Telefono móvil android y cable de datos",
+  image = "../src/assets/webpack.png",
+  url = "#",
+  tags = ["Jetpack Compose"]
+} = Astro.props;
+
+---
+
+<div class="w-full bg-dark text-white py-4">
+    <div class="w-7xl mx-auto px-4">
+        <div class="grid gap-8">
+                <div class="bg-[#879bce] rounded-lg overflow-hidden shadow-xl">
+                    <div class="flex flex-col md:flex-row">
+                        <div class="md:w-1/4 p-8 flex flex-col items-center justify-center">
+                            <div class="w-32 h-32 rounded-full overflow-hidden mb-4">
+                                <img 
+                                    src={image} 
+                                    alt={title} 
+                                    class="w-full h-full object-cover"
+                                />
+                            </div>
+                            <p class="text-lg font-semibold pb-4">Mg. Ricardo<br/>Pérez Sánchez</p>
+                            <a href={url} class="inline-block bg-gray-500 text-white px-6 py-3 rounded-full font-semibold hover:bg-gray-600 transition-colors">
+                                INFORMACIÓN
+                            </a>
+                        </div>
+                        
+                        <div class="md:w-2/4 p-8">
+                            <h3 class="text-2xl font-bold mb-4">{title}</h3>
+                            <div class="space-y-3">
+                                <div class="flex items-center gap-2">
+                                    <span class="text-blue-400">📅</span>
+                                    <p>{new Date(date).toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <span class="text-blue-400">⏰</span>
+                                    <p>{hour}</p>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <span class="text-blue-400">🏢</span>
+                                    <p>{placement}</p>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <span class="text-blue-400">💰</span>
+                                    <p>S/.{cost}</p>
+                                </div>
+                                <div class="flex items-start gap-2">
+                                    <span class="text-blue-400">📝</span>
+                                    <p class="flex-1">{requirements}</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="md:w-1/4 relative object-fill">
+                            <img 
+                                src={image} 
+                                alt={title}
+                                class="w-full h-full object-cover"
+                            />
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .bg-dark {
+        background-color: #020617;
+    }
+</style>

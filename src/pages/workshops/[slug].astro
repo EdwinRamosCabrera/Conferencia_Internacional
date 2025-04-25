@@ -1,0 +1,26 @@
+---
+import type { GetStaticPaths } from "astro";
+import Layout from "../../layouts/layout.astro";
+import { getCollection } from "astro:content";
+import type { CollectionEntry } from 'astro:content';
+
+// Generate all static routes at compile time
+export const getStaticPaths = (async () => {
+    const workshops = await getCollection('workshops');
+    return workshops.map((workshop: CollectionEntry<'workshops'>) => ({
+        params: { slug: workshop.slug },
+        props: { workshop }
+    }));
+}) satisfies GetStaticPaths;
+
+// Properties received from getStaticPaths
+type Props = {
+    workshop: CollectionEntry<'workshops'>;
+};
+const { workshop } = Astro.props;
+const { Content } = await workshop.render();
+
+---
+
+<Content />
+

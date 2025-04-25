@@ -1,0 +1,38 @@
+---
+import Talleres from '../../components/Talleres.astro';
+import Layout from '../../layouts/layout.astro';
+import { getCollection } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+import Header from '../../components/Header.astro';
+import '../../styles/global.css';
+import Footer from '../../components/Footer.astro';
+
+const workshops = await getCollection('workshops');
+---
+<Layout>
+    <Header />
+    <section class="w-full h-5xl pt-30 pb-10  bg-[#020617] text-white">  
+        <div class="w-3xl mx-auto">
+            <h1 class="text-5xl font-bold text-center text-[#e2d51e] pb-6">TALLERES</h1>
+            <p class="text-2xl text-center">"Explora una variedad de talleres diseñados para enriquecer tu aprendizaje y potenciar tus habildades. ¡Insribete hoy y no te pierdas la oportunidad de crecer junto a nosotros!.</p>
+        </div> 
+
+    </section>
+    <section class="w-full pt-10  bg-[#020617] text-white">   
+        <h2 class="text-4xl mb-6 font-bold text-center">¡Únete a nuestros Talleres!</h2>
+        {workshops.map((workshop: CollectionEntry<'workshops'>) => (
+            <Talleres
+                title={workshop.data.title}
+                date={workshop.data.date}
+                hour={workshop.data.hour}
+                placement={workshop.data.placement}
+                cost={workshop.data.cost}
+                requirements={workshop.data.requirements}
+                image={workshop.data.image}
+                tags={workshop.data.tags}
+                url={workshop.data.url}
+            />
+        ))}
+    </section>
+    <Footer />
+</Layout>
