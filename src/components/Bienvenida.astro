@@ -6,9 +6,9 @@ const cards = [
         description: "17 ponencias con destacados expertos internacionales. ¡No te las pierdas!"
     },
     {
-        number: "25va",
+        number: "26va",
         title: "Edición",
-        description: "25 años reuniendo a los mejores ponentes del mundo. ¡Únete a la celebración!"
+        description: "26 años reuniendo a los mejores ponentes del mundo. ¡Únete a la celebración!"
     },
     {
         number: "10",
@@ -16,9 +16,9 @@ const cards = [
         description: "10 temas actuales que no querras perderte. ¡Explora lo último en tecnología!"
     },
     {
-        number: "5",
+        number: "3",
         title: "Talleres",
-        description: "5 talleres clave confirmados. ¡Desarrolla nuevas habilidades!"
+        description: "3 talleres clave confirmados. ¡Desarrolla nuevas habilidades!"
     },
     {
         number: "5",
@@ -27,21 +27,37 @@ const cards = [
     }
 ]   
 ---
-
-<section class="w-full flex flex-col justify-center items-center py-12 px-4 bg-gray-100">
-    <div class="w-7xl flex flex-col justify-center items-center text-center mb-12">
-        <h1 class="text-4xl font-bold text-gray-800">Bienvenido al Congreso Internacional de Ingeniería Informática y Sistemas</h1>
-        <p class="mt-4 text-lg text-gray-600">Explora, aprende y conecta con expertos en el campo de la Tecnología y la Inteligencia Artificial.</p>
-    </div>
-    <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8 w-full max-w-7xl">
-        {cards.map(card => (
-            <div class="bg-white rounded-xl shadow-lg p-8 transform transition-all duration-500 hover:scale-105">
-                <div class="text-center">
-                    <h2 class="text-4xl font-bold text-[#00A6CC] mb-4">{card.number}</h2>
-                    <h3 class="text-2xl font-semibold text-gray-800 mb-3">{card.title}</h3>
-                    <p class="text-gray-600">{card.description}</p>
+<section class="w-full h-auto flex flex-col justify-center items-center my-auto" id="acerca">
+    <div class="w-full flex flex-col justify-center items-center py-6">
+        <div class="w-7xl flex flex-col justify-center items-center text-center mt-10">
+            <h1 class="text-5xl font-bold text-gray-500 mb-2">XXVI Congreso Internacional de</h1>
+            <h1 class="text-5xl font-bold text-[#00A6CC]">Ingeniería Informática y Sistemas</h1>
+            <p class="text-2xl text-gray-600 my-4">Explora, aprende y conecta con expertos en el campo de la Tecnología y la Inteligencia Artificial.</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8 w-full max-w-7xl py-6">
+            {cards.map(card => (
+                <div class="bg-white rounded-xl border border-gray-200 shadow-lg p-8 transform transition-all duration-500 hover:scale-105">
+                    <div class="text-center">
+                        <h2 class="text-4xl font-bold text-[#00A6CC] mb-4">{card.number}</h2>
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-3">{card.title}</h3>
+                        <p class="text-gray-600">{card.description}</p>
+                    </div>
                 </div>
-            </div>
-        ))}
+            ))}
+        </div>
+    </div>
+    <div class="w-full flex flex-row justify-center items-center bg-[#2D4567] gap-6 py-10">
+        <div class="w-4xl text-white items-center justify-center mx-6">
+            <h2 class="text-4xl font-bold text-[#00A6CC] pb-4">Acerca del evento</h2>
+            <p class="text-lg">La XXV edición del Congreso Internacional de <span class="text-md font-bold">Ingeniería Informática y Sistemas</span>: Tiene como propósito reforzar las necesidades de atención y tendencias en el desarrollo adaptativo, colaborativo y resiliente de la evolución digital disruptiva, dividida en cuatro ejes temáticos, para su aplicación y proyección: Smart City, Inteligencia Artificial, Digitalización de Información y Liderazgo 4.0.</p>
+            <p class="text-lg">El evento reunirá a especialistas de países como: Japón, Alemania, España, Brasil, México, Colombia, Chile, Paraguay, Perú entre otros, quienes presentarán los temas de su especialidad con un análisis constructivo sobre la revolución 4.0, en investigaciones, proyectos, empresas y servicios en general.</p>
+            <p class="text-lg pt-2"><span class="text-lg font-bold">Fecha:</span> 10 de noviembre de 2025</p>
+            <p class="text-lg"><span class="text-lg font-bold">Lugar:</span> Universidad de San Martín de Porres de Arequipa, Perú</p>
+        </div>
+        <div class="items-center justify-center mx-6">
+            <img src="/src/assets/Congreso_01.jpg" alt="congreso" class="w-80 h-80 object-cover rounded-lg" />
+        </div>
     </div>
 </section>
+
+

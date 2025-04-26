@@ -1,21 +1,18 @@
 ---
 import Bienvenida from './Bienvenida.astro';
-import Descripcion from './Descripcion.astro';
 import Ponentes from './Ponentes.astro';
 import Cronograma from './Cronograma.astro';
 import Auspiciadores from './Auspiciadores.astro';
 import Landing from './Landing.astro';
-import Talleres from './Talleres.astro';
 import { getCollection } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
 
 const workshops = await getCollection('workshops');
 ---
-<main class="flex flex-col items-center justify-center">
+<main class="w-full min-w-4xl flex flex-col items-center justify-center">
     <Landing />
     <Bienvenida />
-    <Descripcion />
     <Ponentes />
-    <Cronograma />
-    <Auspiciadores />
+    <Cronograma/>
+    <Auspiciadores id="auspiciadores"/>
 </main>

@@ -7,5 +7,56 @@ cost: 100.00
 requirements: "Arduino WIFI, un sensor ultrasónico, un ESP32"
 image: "../src/assets/Reforzado.png"
 tags: ["Arduino", "ESP32", "Python"]
-url: "#"
+name: "Ph.D. Kenji Nakamura"
+photo: "../src/assets/Kenji_Nakamura.jpg"
+url: "/workshops/aprendizaje-reforzado"
 ---
+
+import Layout from '../../layouts/layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import '../../styles/global.css';
+
+<Layout>
+    <Header />
+    <section class="w-full h-screen bg-cover bg-center relative overflow-hidden" style={`background-image: url('/Talleres.webp'); background-size: cover; background-position: center;`}>
+        <div class="absolute w-full h-full bg-[#000415]/90 top-0 z-30 grid place-content-center">
+            <div class="w-5xl mx-auto flex flex-col justify-center items-center text-white">
+            <h1 class="text-3xl font-bold mb-6 text-[#00A6CC] text-center">INTRODUCCIÓN PRÁCTICA AL APRENDIZAJE POR REFUERZO CON PYTHON</h1>
+            <div class="mb-6 mx-auto flex flex-row justify-center items-center gap-10">
+                <div class="w-3xl">
+                <h2 class="text-[1.3rem] font-bold my-2">Objetivo</h2>
+                <p class="text-lg text-gray-200">Enseñar los fundamentos del RL mediante la implementación de un agente inteligente que resuelva un problema real (ej: juego CartPole de OpenAI Gym o optimización de rutas).</p>
+                <h2 class="text-[1.3rem] font-bold my-2">Resumen</h2>
+                <p class="text-lg text-gray-200">Sesión interactiva que cubrirá:</p>
+                <ul class="list-disc pl-6">
+                    <li class="text-lg text-gray-200">
+                    Conceptos clave: Q-Learning, políticas, recompensas.
+                    </li>
+                    <li class="text-lg text-gray-200">
+                    Uso de librerías como Gymnasium, Stable Baselines3 y PyTorch.
+                    </li>
+                    <li class="text-lg text-gray-200">
+                    Demo en vivo entrenando un agente y métricas de evaluación.
+                    </li>
+                </ul>
+                <h2 class="text-[1.3rem] font-bold my-2">Requerimientos</h2>
+                <ul class="list-disc pl-6">
+                    <li class="text-lg text-gray-200">Python 3.8+ instalado.</li>
+                    <li class="text-lg text-gray-200">Conocimientos básicos de pandas y numpy.</li>
+                    <li class="text-lg text-gray-200 mb-4">(Opcional) GPU para entrenamiento acelerado.</li>
+                </ul>
+                <p class="text-lg"><span class="font-bold">📅 Fecha:</span> {new Date(frontmatter.date).toLocaleDateString('es-ES', {day: 'numeric', month: 'long', year: 'numeric'})}</p>
+                <p class="text-lg"><span class="font-bold">⏰ Horario:</span> {frontmatter.hour}</p>
+                <p class="text-lg"><span class="font-bold">🏢 Lugar:</span> {frontmatter.placement}</p>
+                <p class="text-lg"><span class="font-bold">💰 Costo:</span> S/. {frontmatter.cost}</p>
+                </div>
+                <div class="mb-6 flex flex-col">
+                <img src={frontmatter.image} alt={frontmatter.title} class="w-lg h-lg object-cover"/>
+                </div>
+            </div>
+            </div>
+        </div>
+        </section>
+    <Footer />
+</Layout>

@@ -10,6 +10,8 @@ const workshopsCollection = defineCollection({
     requirements: z.string(),
     image: z.string(),
     tags: z.array(z.string()),
+    name: z.string(),
+    photo: z.string(),
     url: z.string().optional(),
   }),
 });

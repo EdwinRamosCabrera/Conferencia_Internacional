@@ -1,12 +1,86 @@
 ---
 title: "Aplicaciones industriales con IOT y Edge AI"
 date: 2025-11-28
-hour: "11:00 - 13:00 & 18:00 - 20:30"
+hour: "11:00 - 13:00"
 placement: "Laboratorio A"
-cost: 15
+cost: 100
 requirements: "Arduino WIFI, un sensor ultrasónico, un ESP32 y una celda de carga (Opcionales)"
 image: "../src/assets/iot.jpg"
 tags: ["IOT", "Arduino", "ESP32", "Industria"]
+name: "Mg. Pedro Robles Diaz"
+photo: "../src/assets/Pedro_Robles_Diaz.jpg"
 url: "/workshops/iot"
 ---
 
+import Layout from "../../layouts/layout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import "../../styles/global.css";
+
+<Layout>
+  <Header />
+  <section
+    class="w-full h-screen bg-cover bg-center relative overflow-hidden"
+    style={`background-image: url('/Talleres.webp'); background-size: cover; background-position: center;`}
+  >
+    <div class="absolute w-full h-full bg-[#000415]/90 top-0 z-30 grid place-content-center">
+      <div class="w-5xl mx-auto flex flex-col justify-center items-center text-white">
+        <h1 class="text-3xl font-bold mb-6 text-[#00A6CC] text-center">
+          APLICACIONES INDUSTRIALES CON IOT Y EDGE AI
+        </h1>
+        <div class="mb-6 flex flex-row justify-center items-center gap-10">
+          <div class="w-3xl">
+            <h2 class="text-[1.3rem] font-bold my-2">Objetivo</h2>
+            <p class="text-lg text-gray-200">Mostrar cómo desplegar modelos de IA en dispositivos IoT (Raspberry Pi/ESP32) para casos industriales (mantenimiento predictivo, monitoreo ambiental).</p>
+            <h2 class="text-[1.3rem] font-bold my-2">Resumen</h2>
+            <p class="text-lg text-gray-200">Durante el taller se desarrollará:</p>
+            <ul class="list-disc pl-6">
+              <li class="text-lg text-gray-200">
+                Flujo completo: desde sensores (ej: temperatura/vibración) hasta inferencia en edge con TensorFlow Lite.
+              </li>
+              <li class="text-lg text-gray-200">
+                Protocolos IoT (MQTT) y optimización de modelos para hardware limitado.
+              </li>
+              <li class="mb-2 text-lg text-gray-200">
+                Caso de éxito: Detección de anomalías en maquinaria.
+              </li>
+            </ul>
+            <h2 class="text-[1.3rem] font-bold my-2">Requerimientos</h2>
+            <ul class="list-disc pl-6">
+              <li class="text-lg text-gray-200">
+                Arduino WIFI, un sensor ultrasónico, un ESP32
+              </li>
+              <li class="text-lg text-gray-200">
+                Laptop con Docker instalado.
+              </li>
+              <li class="text-lg text-gray-200 mb-4">
+                (Recomendado) Conocimientos básicos de Python y redes.
+              </li>
+            </ul>
+            <p class="text-lg">
+              <span class="font-bold">📅 Fecha:</span>{" "}
+              {new Date(frontmatter.date).toLocaleDateString("es-ES", {
+                day: "numeric",
+                month: "long",
+                year: "numeric",
+              })}
+            </p>
+            <p class="text-lg">
+              <span class="font-bold">⏰ Horario: </span>{frontmatter.hour}
+            </p>
+            <p class="text-lg">
+              <span class="font-bold">🏢 Lugar: </span>{frontmatter.placement}
+            </p>
+            <p class="text-lg">
+              <span class="font-bold">💰 Costo: </span>S/. {frontmatter.cost}
+            </p>
+          </div>
+          <div class="mb-6 flex flex-col">
+            <img src={frontmatter.image} alt={frontmatter.title} class="w-md h-md object-cover"/>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <Footer />
+</Layout>

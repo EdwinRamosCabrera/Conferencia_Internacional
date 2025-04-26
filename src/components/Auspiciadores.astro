@@ -10,31 +10,35 @@ const sponsors = [
 ];
 ---
 
-<section class="w-full bg-[#020617] py-10">
+<section class="w-full bg-[#020617] py-10" id="auspiciadores">
   <div class="max-w-full mx-auto px-2">
-    <h2 class="text-4xl font-bold text-center mb-4">
+    <h2 class="text-4xl font-bold text-center mb-16">
       <span class="text-white">Nuestros</span>
-      <span class="text-[#3b82f6]">Auspiciadores</span>
+      <span class="text-[#00A6CC]">Auspiciadores</span>
     </h2>
 
     <div class="relative overflow-hidden">
-      <div class="sponsor-track flex items-center gap-10">
+      {/* Gradients for opacity effect at the ends */}
+      <div class="absolute left-0 top-0 w-32 h-full bg-gradient-to-r from-[#020617] to-transparent z-10"></div>
+      <div class="absolute right-0 top-0 w-32 h-full bg-gradient-to-l from-[#020617] to-transparent z-10"></div>
+      
+      <div class="sponsor-track flex items-center gap-16">
         {sponsors.map((sponsor) => (
-          <div class="sponsor-slide flex flex-wrap">
+          <div class="sponsor-slide flex-shrink-0">
             <img
               src={sponsor.image}
               alt={sponsor.name}
-              class="w-100 h-60 rounded-lg object-contain"
+              class="w-[120px] sm:w-[100px] md:w-[120px] h-auto object-contain"
             />
           </div>
         ))}
         {/* Duplicate sponsors for seamless loop */}
         {sponsors.map((sponsor) => (
-          <div class="sponsor-slide flex flex-wrap">
+          <div class="sponsor-slide flex-shrink-0">
             <img
               src={sponsor.image}
               alt={sponsor.name}
-              class="w-100 h-60 rounded-lg object-contain"
+              class="w-[120px] sm:w-[100px] md:w-[120px] h-auto object-contain"
             />
           </div>
         ))}
@@ -45,31 +49,53 @@ const sponsors = [
 
 <style>
   .sponsor-track {
-    animation: scroll 30s linear infinite;
+    animation: scroll 40s linear infinite;
+    will-change: transform;
   }
 
   @keyframes scroll {
-    0% {
+    from {
       transform: translateX(0);
     }
-    100% {
-      transform: translateX(-30%);
+    to {
+      transform: translateX(-50%);
     }
   }
 
   .sponsor-track:hover {
     animation-play-state: paused;
   }
+
+  /* Asegura que las imágenes mantengan su aspecto */
+  .sponsor-slide img {
+    max-height: 100px;
+    transition: transform 0.3s ease;
+  }
+
+  .sponsor-slide:hover img {
+    transform: scale(1.05);
+  }
 </style>
 
 <script>
-  // Ensure smooth animation restart when the track finishes
+  // Asegura una animación continua y suave
   const track = document.querySelector('.sponsor-track') as HTMLElement;
+  
   if (track) {
-    track.addEventListener('animationend', () => {
+    const resetAnimation = () => {
       track.style.animation = 'none';
       track.offsetHeight; // Trigger reflow
-      track.style.animation = 'scroll 30s linear infinite';
+      track.style.animation = 'scroll 40s linear infinite';
+    };
+
+    // Reinicia la animación cuando termina
+    track.addEventListener('animationend', resetAnimation);
+
+    // También reinicia la animación si la pestaña pierde y recupera el foco
+    document.addEventListener('visibilitychange', () => {
+      if (document.visibilityState === 'visible') {
+        resetAnimation();
+      }
     });
   }
 </script>

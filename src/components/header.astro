@@ -1,16 +1,16 @@
 ---
 import Logo from '/public/LOGOCIIS.svg';
 const links : {name:string, href:string}[] = [
-    { name: 'PRINCIPAL', href: '/' },
-    { name: 'PONENTES', href: '/about' },
-    { name: 'CRONOGRAMA', href: '/contact' },
+    { name: 'INICIO', href: '/' },
+    { name: 'ACERCA DEL EVENTO', href: '/#acerca' },
+    { name: 'PONENTES', href: '/#ponentes' },
+    { name: 'CRONOGRAMA', href: '/#cronograma' },
+    { name: 'AUSPICADORES', href: '/#auspiciadores' },
     { name: 'TALLERES', href: '/workshops' },
-    { name: 'CONCURSOS', href: '/blog' },
-    { name: 'INSCRIPCIÓN', href: '/blog' },
 ];
 ---
 
-<header class="fixed w-full z-10 h-15 flex justify-center items-center bg-[#024059] text-white">
+<header class="fixed w-full z-100 h-15 flex justify-center items-center bg-[#024059] text-white">
 <nav class="w-7xl my-2 flex justify-between items-center">
     <div class="flex flex-wrap">
         <img src={Logo.src} width="150" height="50" alt="logo">
@@ -19,11 +19,10 @@ const links : {name:string, href:string}[] = [
         <ul class="flex gap-4">
             {links.map((link) => (
                 <li class="inline-block mr-4">
-                    <a href={link.href} class="text-white hover:text-gray-400">{link.name}</a>
+                    <a href={link.href} class="text-white hover:text-[#00A6CC]">{link.name}</a>
                 </li>
             ))}
         </ul>
     </div>
 </nav>
 </header>
-    

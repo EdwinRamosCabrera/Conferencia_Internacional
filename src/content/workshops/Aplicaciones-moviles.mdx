@@ -7,5 +7,56 @@ cost: 100.00
 requirements: "Telefono móvil android y cable de datos"
 image: "../src/assets/webpack.png"
 tags: ["Jetpack Compose"]
-url: "#"
+name: "Mg. Maria Salazar Rodriguez"
+photo: "../src/assets/Maria_Salazar_Rodriguez.jpg"
+url: "/workshops/aplicaciones-moviles"
 ---
+
+import Layout from '../../layouts/layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import '../../styles/global.css';
+
+<Layout>
+    <Header />
+    <section class="w-full h-screen bg-cover bg-center relative overflow-hidden" style={`background-image: url('/Talleres.webp'); background-size: cover; background-position: center;`}>
+        <div class="absolute w-full h-full bg-[#000415]/90 top-0 z-30 grid place-content-center">
+            <div class="w-5xl mx-auto flex flex-col justify-center items-center text-white">
+            <h1 class="text-3xl font-bold mb-6 text-[#00A6CC] text-center">DESARROLLO DE APLICACIONES MÓVILES CON JETPACK COMPOSE (ANDROID) E IA</h1>
+            <div class="mb-6 flex flex-row justify-center items-center gap-10">
+                <div class="w-3xl">
+                <h2 class="text-[1.3rem] font-bold my-2">Objetivo</h2>
+                <p class="text-lg text-gray-200">Capacitar a los participantes en la creación de apps móviles modernas con Jetpack Compose, integrando modelos de IA (como TensorFlow Lite o Gemini) para funcionalidades avanzadas (ej: reconocimiento de imágenes o procesamiento de lenguaje natural).</p>
+                <h2 class="text-[1.3rem] font-bold my-2">Resumen</h2>
+                <p class="text-lg text-gray-200">Taller 100% práctico donde se construirá una app Android desde cero usando Jetpack Compose (Kotlin), con énfasis en:</p>
+                <ul class="list-disc pl-6">
+                    <li class="text-lg text-gray-200">
+                    Arquitectura MVVM y manejo de estados.
+                    </li>
+                    <li class="text-lg text-gray-200">
+                    Integración de APIs de IA para features como chatbots o filtros inteligentes.
+                    </li>
+                    <li class="text-lg text-gray-200">
+                    Optimización para rendimiento en dispositivos móviles.
+                    </li>
+                </ul>
+                <h2 class="text-[1.3rem] font-bold my-2">Requerimientos</h2>
+                <ul class="list-disc pl-6">
+                    <li class="text-lg text-gray-200">Conocimientos básicos de Kotlin/Java.</li>
+                    <li class="text-lg text-gray-200">Android Studio instalado (versión estable).</li>
+                    <li class="text-lg text-gray-200 mb-4">Dispositivo físico o emulador Android.</li>
+                </ul>
+                <p class="text-lg"><span class="font-bold">📅 Fecha:</span> {new Date(frontmatter.date).toLocaleDateString('es-ES', {day: 'numeric', month: 'long', year: 'numeric'})}</p>
+                <p class="text-lg"><span class="font-bold">⏰ Horario:</span> {frontmatter.hour}</p>
+                <p class="text-lg"><span class="font-bold">🏢 Lugar:</span> {frontmatter.placement}</p>
+                <p class="text-lg"><span class="font-bold">💰 Costo:</span> S/. {frontmatter.cost}</p>
+                </div>
+                <div class="mb-6 flex flex-col">
+                <img src={frontmatter.image} alt={frontmatter.title} class="w-lg h-lg object-cover"/>
+                </div>
+            </div>
+            </div>
+        </div>
+        </section>
+    <Footer />
+</Layout>

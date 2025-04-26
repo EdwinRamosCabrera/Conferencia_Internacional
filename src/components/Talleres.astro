@@ -9,9 +9,12 @@ interface Props {
   requirements: string;
   image?: string;
   tags?: string[];
+  name?: string;
+  photo?: string;
   url?: string;
 }
 
+// Default values for props
 const { 
   title = "Desarrollo de aplicaciones móviles con Jetpack Compose",
   date = new Date("2025-11-27"),
@@ -21,7 +24,9 @@ const {
   requirements = "Telefono móvil android y cable de datos",
   image = "../src/assets/webpack.png",
   url = "#",
-  tags = ["Jetpack Compose"]
+  tags = ["Jetpack Compose"],
+  name = "Dr. Ricardo Sanchez Torres",
+  photo = "../src/assets/Ricardo_Sanchez_Torres.jpg"
 } = Astro.props;
 
 ---
@@ -34,13 +39,13 @@ const {
                         <div class="md:w-1/4 p-8 flex flex-col items-center justify-center">
                             <div class="w-32 h-32 rounded-full overflow-hidden mb-4">
                                 <img 
-                                    src={image} 
+                                    src={photo} 
                                     alt={title} 
                                     class="w-full h-full object-cover"
                                 />
                             </div>
-                            <p class="text-lg font-semibold pb-4">Mg. Ricardo<br/>Pérez Sánchez</p>
-                            <a href={url} class="inline-block bg-gray-500 text-white px-6 py-3 rounded-full font-semibold hover:bg-gray-600 transition-colors">
+                            <p class="text-lg font-semibold pb-4">{name}</p>
+                            <a href={url} class="inline-block bg-gray-500 text-white px-6 py-3 rounded-full font-semibold hover:bg-[#00A6CC] transition-colors">
                                 INFORMACIÓN
                             </a>
                         </div>
